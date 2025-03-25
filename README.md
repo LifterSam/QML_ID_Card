@@ -8,8 +8,7 @@ and should open the system standard browser and show this repository.
 You can see the card generated in the two pictures: ID_LifterSam_General.PNG and ID_LifterSam_Detail.PNG
 
 The code consists of a C++ main.cpp file including the neccessary statements to bind in a QML application.
-Forthermore the Main.qml file contains all the QML code for the here shown visualization. The code has
-detailed comments implemented since it is for learners to show concepts.
+Forthermore the Main.qml file contains all the QML code for the here shown visualization.
 
 Best regards,
 Thomas
