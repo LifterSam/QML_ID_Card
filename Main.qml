@@ -11,15 +11,15 @@ Window {
 
     component ContactInfo: QtObject {
 
-        // Diese properties sind immer sichtbar
+        // those properties are always visible
         property string name
         property url photo
 
-        // General properties:
+        // general properties:
         property string occupation
         property string company
 
-        // Details properties:
+        // detailed properties:
         property string address
         property string country
         property string phone
@@ -31,7 +31,7 @@ Window {
         id: myContactInfo
 
         name: "LifterSam"
-        photo: Qt.resolvedUrl("IDPhoto_LifterSam.png") // WICHTIG: im cmake muss Foto angegeben werden unter RESSOURCES
+        photo: Qt.resolvedUrl("IDPhoto_LifterSam.png") // needs to be included in cmake (!)
         occupation: "QML Programmer"
         company: "(Mi)³ Management"
         address: "Straße der Freundschaft 69"
@@ -42,51 +42,51 @@ Window {
     }
 
     Rectangle {
-        id: borderRectangle    // Das äußere Rechteck, das als Rahmen dient; alles hier verankert
+        id: borderRectangle    
         anchors {
-            fill: parent       // Das Rechteck füllt das übergeordnete Element komplett aus
-            margins: 5         // Lässt einen 5px Abstand zu den Rändern des Eltern-Elements
+            fill: parent      
+            margins: 5         
         }
 
-        gradient: Gradient {   // Gradient geht nur vertikal; lieber Bildhintergrund nehmen
+        gradient: Gradient {   
             GradientStop {
-                position: 0.0  // Immer y-Position wird hier angegeben
-                color: "white" // Start ist oben wie beim CRT Monitor
+                position: 0.0  
+                color: "white" 
             }
             GradientStop {
-                position: 1.0  // 1.0 heißt y-Achse komplett ausgenutzt (100 %) d.h. bis unten
+                position: 1.0  
                 color: "grey"
             }
         }
 
         border {
-            color: "black"     // Rahmenfarbe ist schwarz
-            width: 3           // Rahmenbreite ist 3 Pixel
+            color: "black"     
+            width: 3           
         }
-        radius: 10             // Abgerundete Ecken mit einem Radius von 10 Pixeln
+        radius: 10             
 
         Rectangle {
-            id: imageFrame      // Inneres Rechteck, das den Rahmen für das Bild bildet
-            width: 200          // Feste Breite von 200 Pixeln
-            height: 200         // Feste Höhe von 200 Pixeln
-            anchors.top: parent.top     // Das Rechteck wird oben am übergeordneten Element ausgerichtet
-            anchors.right: parent.right // Das Rechteck wird rechts am übergeordneten Element ausgerichtet
-            anchors.margins: 5          // Abstand von 5 Pixeln nach oben und rechts
-            color: "transparent"        // Hintergrund ist durchsichtig
-            border.color: "black"       // Der Rahmen dieses Rechtecks ist ebenfalls schwarz
-            border.width: 2             // Rahmenbreite beträgt 2 Pixel
-            radius: 5                   // Abgerundete Ecken mit einem Radius von 5 Pixeln
+            id: imageFrame      
+            width: 200          
+            height: 200         
+            anchors.top: parent.top     
+            anchors.right: parent.right 
+            anchors.margins: 5          
+            color: "transparent"        
+            border.color: "black"       
+            border.width: 2             
+            radius: 5                   
 
             Image {
                 source: "IDPhoto_LifterSam.png"
-                anchors.fill: parent              // Das Bild füllt das gesamte `imageFrame`-Rechteck aus
-                anchors.margins: 5                // Sorgt für einen Abstand von 5 Pixeln zwischen Bild und `imageFrame`
-                fillMode: Image.PreserveAspectFit // Bild wird skaliert, sodass es proportional bleibt und in den Frame passt
+                anchors.fill: parent              
+                anchors.margins: 5                
+                fillMode: Image.PreserveAspectFit 
             }
         }
 
         Text {
-            id: name         // Dieses Feld ist immer sichtbar auch bei Button Toggle Aktion
+            id: name         // this field is always visible, even with button toggle action
             text: myContactInfo.name
             anchors.top: borderRectangle.top
             anchors.left: borderRectangle.left
@@ -99,7 +99,7 @@ Window {
 
         Text {
             id: erscheinungsjahr
-            text: "©T.E. 1993" // ein Scherz, weil das Design der Karte aussieht wie aus den 90ern
+            text: "©T.E. 1993" // a joke because the design of the card looks like it's from the '90s
             anchors.bottom: borderRectangle.bottom
             anchors.right: borderRectangle.right
             anchors.bottomMargin: 10
@@ -108,16 +108,16 @@ Window {
             font.bold: true
         }
 
-        // Initiale Textfelder vor Button Swap =====================================================
+        // initial text field before button swap ====================================================
         Text {
             id: occupation
-            visible: true              // Beim Aufruf der Karte ist dieses Feld sichtbar
+            visible: true              // at first call this field is visible
             text: myContactInfo.occupation
             anchors.top: name.bottom
             anchors.left: name.left
             anchors.topMargin: 10
             font.pixelSize: 30
-            font.bold: false          // Kann auch weggelassen werden, hier nur als Beispiel
+            font.bold: false          // can be omitted, only shown as example
             color: "black"
         }
 
@@ -132,11 +132,11 @@ Window {
             color: "black"
         }
 
-        // Textfelder bei Button Swap ==============================================================
+        // text fields at button swap ==============================================================
         Text {
             id: address
-            visible: false              // Beim Aufruf der Karte ist dieses Feld nicht-sichtbar
-            text: myContactInfo.address // Befindet sich aber auf selber Ebene
+            visible: false              // at first call this field is invisible
+            text: myContactInfo.address 
             anchors.top: name.bottom
             anchors.left: name.left
             anchors.topMargin: 10
@@ -187,19 +187,19 @@ Window {
             font.pixelSize: 20
             color: "black"
 
-            // Mit Click die Homepage öffnen können ==============================================
-            MouseArea { // Einrückung zeigt, die MouseArea gehört zum Textfeld der webSite
+            // how to open homepage with click on text ============================================
+            MouseArea { 
                 anchors.fill: parent
                 cursorShape: Qt.PointingHandCursor
                 onClicked: {
-                    // Öffnet die URL im Standard-Browser
+                    // next line opens URL in system standard browser
                     Qt.openUrlExternally("https://github.com/LifterSam/QML_ID_Card")
                 }
             }
         }
 
 
-        // Button besteht aus Textfeld mit Event Handling ========================================
+        // button is build from text field with event handler ====================================
         Rectangle {
             id: button
             width: 130
@@ -225,11 +225,11 @@ Window {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    console.log("Button wurde geklickt!")
+                    console.log("Button was clicked!")
 
-                    // Toggle zwischen General und Details
-                    if (buttonText.text === "Details") { // Bedingung gitl für Moment, in welchem Butto geclickt wird (!)
-                        // Wenn der Button "Details" zeigt, wechsle zu "General" als Button Text und zeige die Detail Infos
+                    // toggle between general and details
+                    if (buttonText.text === "Details") { // condition applies to the moment in which the button is clicked (!)
+                        // if the button shows 'Details,' change the button text to 'General' and display the detailed information
                         occupation.visible = false
                         company.visible = false
 
@@ -244,7 +244,7 @@ Window {
                         button.color = "#bdbdbd"
 
                     } else {
-                        // Wenn der Button "General" zeigt, wechsle zu "Details" als Button Text und zeige General Infos
+                        // if the button shows 'General,' change the button text to 'Details' and display the general information
                         occupation.visible = true
                         company.visible = true
 
