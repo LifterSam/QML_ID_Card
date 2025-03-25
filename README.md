@@ -1,6 +1,6 @@
 Hello,
 
-this is a quick presentation of QML with a very simpel ID card. If you run the code in a suitable 
+this is a quick presentation of QML with a very simple ID card. If you run the code in a suitable 
 environment you can click on the button in the left bottom corner and it will swap out general 
 informations against detailed informations and vice versa. The URL can be clicked if the code is run
 and should open the system standard browser and show this repository.
